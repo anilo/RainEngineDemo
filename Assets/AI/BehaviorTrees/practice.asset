@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1227330239, guid: 0afa4843f495f6b4690c9bab57d33da6, type: 3}
+  m_Name: practice
+  m_EditorClassIdentifier: 
+  _dataSerializer:
+    _serializedData: <scriptableobject version="1.1" type="RAIN.BehaviorTrees.BTAsset"><fields><field
+      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;practice&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
+      repeatuntil=&quot;&quot; name=&quot;root&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;detect
+      sensor=&quot;&amp;quot;close&amp;quot;&quot; repeatuntil=&quot;running&quot;
+      name=&quot;detect if very close&quot; entityobjectvariable=&quot;varHeroClose&quot;
+      debugbreak=&quot;False&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
+      aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;eyes&amp;quot;&quot;
+      repeatuntil=&quot;running&quot; name=&quot;detect if nearby&quot; entityobjectvariable=&quot;varHero&quot;
+      debugbreak=&quot;False&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
+      aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero not
+      found&quot; debugbreak=&quot;False&quot; constraint=&quot;varHero == null &amp;amp;&amp;amp;
+      enemyHealth &amp;gt; 0&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
+      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;waypointpatrol
+      waypointsetvariable=&quot;myWaypointRoute&quot; waypointactiontype=&quot;patrol&quot;
+      traversetype=&quot;loop&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
+      pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot; movetargetvariable=&quot;nextStop&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
+      name=&quot;move-to-waypoint&quot; movetarget=&quot;nextStop&quot; movespeed=&quot;1&quot;
+      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;animate repeatuntil=&quot;&quot;
+      name=&quot;animate-walk&quot; debugbreak=&quot;False&quot; animationstate=&quot;walk&quot;
+      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;constraint hero found&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyHealth &amp;gt; 0 &amp;amp;&amp;amp; enemyHealth &amp;gt;
+      0&quot;&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;constraint hero not nearby&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;varHeroClose == null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;animate-run&quot;
+      debugbreak=&quot;False&quot; animationstate=&quot;run&quot; /&gt;&lt;move turnspeed=&quot;&quot;
+      repeatuntil=&quot;&quot; name=&quot;move-to-player&quot; movetarget=&quot;varHero&quot;
+      movespeed=&quot;2&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero nearby&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;varHeroClose != null&quot;&gt;&lt;animate
+      repeatuntil=&quot;running&quot; name=&quot;animate-punch&quot; debugbreak=&quot;False&quot;
+      animationstate=&quot;punch&quot; /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint health
+      zero&quot; debugbreak=&quot;False&quot; constraint=&quot;enemyHealth &amp;lt;=
+      0&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;animate repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;animate - death&quot; debugbreak=&quot;False&quot;
+      animationstate=&quot;death&quot; /&gt;&lt;yield priority=&quot;&quot; name=&quot;yield&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;timer waitforsec=&quot;2&quot; returnvalue=&quot;success&quot;
+      priority=&quot;&quot; name=&quot;timer&quot; debugbreak=&quot;False&quot; /&gt;&lt;action
+      repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;action - destruct&quot;
+      debugbreak=&quot;False&quot; classname=&quot;EnemyCustomActionTest&quot; /&gt;&lt;/sequencer&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"
+      type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
+      elementtype="System.String" /></fields><references /></scriptableobject>
+    _serializedGameObjects: []
+    _serializedCustomData: []
