@@ -5,16 +5,18 @@ function Start () {
 }
 
 function Update () {
-	print ("ok go");
+	//print ("ok go");
 
 }
 
 function OnTriggerEnter (other : Collider) {
 		
-	print ("trying to jump");
+	print ("tttrigger enter event");
 
 	if(other.gameObject.tag == "PlayerHead")
 	{
-		Destroy(other.gameObject);
+		print ("killing collider object");
+
+		Destroy(other.transform.parent.gameObject);
 	}
 }

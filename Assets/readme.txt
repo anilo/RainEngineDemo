@@ -4,4 +4,4 @@ RAIN 2.1 tutorial project
 
 - Use the Basic scene to see how the completed tutorial works.
 
-- Use the Mecanim scene to see how to rig up a Mecanim character.
+- Use the Mecanim scene to see how to rig up a Mecanim character ... 
