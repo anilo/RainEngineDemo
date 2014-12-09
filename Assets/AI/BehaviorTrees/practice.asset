@@ -16,17 +16,17 @@ MonoBehaviour:
       value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;practice&quot;
       debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
       repeatuntil=&quot;&quot; name=&quot;root&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;detect
-      sensor=&quot;&amp;quot;close&amp;quot;&quot; repeatuntil=&quot;running&quot;
+      sensor=&quot;&amp;quot;closeSensor&amp;quot;&quot; repeatuntil=&quot;running&quot;
       name=&quot;detect if very close&quot; entityobjectvariable=&quot;varHeroClose&quot;
       debugbreak=&quot;False&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
-      aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;eyes&amp;quot;&quot;
+      aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;nearbySensor&amp;quot;&quot;
       repeatuntil=&quot;running&quot; name=&quot;detect if nearby&quot; entityobjectvariable=&quot;varHero&quot;
       debugbreak=&quot;False&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
       aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
       repeatuntil=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero not
       found&quot; debugbreak=&quot;False&quot; constraint=&quot;varHero == null &amp;amp;&amp;amp;
-      enemyHealth &amp;gt; 0&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
+      myHealth &amp;gt; 0&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
       repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;waypointpatrol
       waypointsetvariable=&quot;myWaypointRoute&quot; waypointactiontype=&quot;patrol&quot;
       traversetype=&quot;loop&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
@@ -38,23 +38,23 @@ MonoBehaviour:
       name=&quot;animate-walk&quot; debugbreak=&quot;False&quot; animationstate=&quot;walk&quot;
       /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;constraint hero found&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;enemyHealth &amp;gt; 0 &amp;amp;&amp;amp; enemyHealth &amp;gt;
-      0&quot;&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
-      name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;constraint hero not nearby&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;varHeroClose == null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
-      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;animate-run&quot;
-      debugbreak=&quot;False&quot; animationstate=&quot;run&quot; /&gt;&lt;move turnspeed=&quot;&quot;
-      repeatuntil=&quot;&quot; name=&quot;move-to-player&quot; movetarget=&quot;varHero&quot;
-      movespeed=&quot;2&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
-      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero nearby&quot;
+      constraint=&quot;myHealth &amp;gt; 0 &amp;amp;&amp;amp; varHero != null &quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;constraint hero not close&quot; debugbreak=&quot;False&quot; constraint=&quot;varHeroClose
+      == null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
+      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;animate
+      repeatuntil=&quot;&quot; name=&quot;animate-run&quot; debugbreak=&quot;False&quot;
+      animationstate=&quot;run&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
+      name=&quot;move-to-player&quot; movetarget=&quot;varHero&quot; movespeed=&quot;2&quot;
+      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero close&quot;
       debugbreak=&quot;False&quot; constraint=&quot;varHeroClose != null&quot;&gt;&lt;animate
       repeatuntil=&quot;running&quot; name=&quot;animate-punch&quot; debugbreak=&quot;False&quot;
       animationstate=&quot;punch&quot; /&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint health
-      zero&quot; debugbreak=&quot;False&quot; constraint=&quot;enemyHealth &amp;lt;=
+      zero&quot; debugbreak=&quot;False&quot; constraint=&quot;myHealth &amp;lt;=
       0&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
       name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;animate repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;animate - death&quot; debugbreak=&quot;False&quot;
