@@ -20,33 +20,34 @@ MonoBehaviour:
       name=&quot;detect if very close&quot; entityobjectvariable=&quot;varHeroClose&quot;
       debugbreak=&quot;False&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
       aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;nearbySensor&amp;quot;&quot;
-      repeatuntil=&quot;running&quot; name=&quot;detect if nearby&quot; entityobjectvariable=&quot;varHero&quot;
+      repeatuntil=&quot;running&quot; name=&quot;detect if nearby&quot; entityobjectvariable=&quot;varHeroNearby&quot;
       debugbreak=&quot;False&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
       aspect=&quot;&amp;quot;heroAspect&amp;quot;&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
       repeatuntil=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero not
-      found&quot; debugbreak=&quot;False&quot; constraint=&quot;varHero == null &amp;amp;&amp;amp;
-      myHealth &amp;gt; 0&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;waypointpatrol
-      waypointsetvariable=&quot;myWaypointRoute&quot; waypointactiontype=&quot;patrol&quot;
-      traversetype=&quot;loop&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
-      pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot; movetargetvariable=&quot;nextStop&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;move-to-waypoint&quot; movetarget=&quot;nextStop&quot; movespeed=&quot;1&quot;
-      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;animate repeatuntil=&quot;&quot;
-      name=&quot;animate-walk&quot; debugbreak=&quot;False&quot; animationstate=&quot;walk&quot;
-      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;constraint hero found&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;myHealth &amp;gt; 0 &amp;amp;&amp;amp; varHero != null &quot;&gt;&lt;selector
-      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;constraint hero not close&quot; debugbreak=&quot;False&quot; constraint=&quot;varHeroClose
-      == null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;animate
+      found&quot; debugbreak=&quot;False&quot; constraint=&quot;varHeroNearby == null
+      &amp;amp;&amp;amp; myHealth &amp;gt; 0&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;myWaypointRoute&quot;
+      waypointactiontype=&quot;patrol&quot; traversetype=&quot;loop&quot; traverseorder=&quot;forward&quot;
+      repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot;
+      movetargetvariable=&quot;nextStop&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move-to-waypoint&quot;
+      movetarget=&quot;nextStop&quot; movespeed=&quot;1&quot; facetarget=&quot;&quot;
+      debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot;
+      /&gt;&lt;/waypointpatrol&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;animate-walk&quot;
+      debugbreak=&quot;False&quot; animationstate=&quot;walk&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero found&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;myHealth &amp;gt; 0 &amp;amp;&amp;amp;
+      varHeroNearby != null &quot;&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero not
+      close&quot; debugbreak=&quot;False&quot; constraint=&quot;varHeroClose == null&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;animate
       repeatuntil=&quot;&quot; name=&quot;animate-run&quot; debugbreak=&quot;False&quot;
       animationstate=&quot;run&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;move-to-player&quot; movetarget=&quot;varHero&quot; movespeed=&quot;2&quot;
+      name=&quot;move-to-player&quot; movetarget=&quot;varHeroNearby&quot; movespeed=&quot;2&quot;
       facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
       closeenoughangle=&quot;&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;constraint hero close&quot;
